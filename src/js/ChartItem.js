@@ -31,6 +31,7 @@ class ChartItem {
             enabled: false
           },
         },
+        maintainAspectRatio: false,
         animations: false,
         scales: {
           x: {
@@ -49,28 +50,7 @@ class ChartItem {
     };
 
     this.chart = new Chart(this.ctx, args);
-  }
-
-  getColor(type) {
-    switch (type) {
-      case 'fastEMA': return '#4169E1'; // blue 
-      case 'mediumEMA': return '#20B2AA'; // wave
-      case 'slowEMA': return '#FFA500'; // orange
-      case 'rsi': return '#000';
-      case 'oiSma':
-      case 'sma':
-        return 'red';
-      case 'lower-bb':
-      case 'upper-bb':
-        return 'blue';
-      default: return '#777';
-    }
-  }
-
-
-  isValueInArrayOfObjectsExists(array, property, value) {
-    const res = array.find(kline => kline[property] == value);
-    return typeof res === 'undefined' ? false : true;
+    this.events();
   }
 
   updateMain(obj) {
@@ -95,23 +75,14 @@ class ChartItem {
       this.chart.data.datasets[index].data = pnlCurrent;
     }
 
-
     this.chart.update();
   }
 
-  findData(label, returnLast = true) {
-    const index = this.chart.data.datasets.findIndex(el => el.label === label);
-
-    // console.log(this.chart.data.datasets[index]);
-    if (index !== -1) {
-      return returnLast ? this.chart.data.datasets[index].data.slice(-1)[0] : this.chart.data.datasets[index].data;
-    }
-
-    return false;
+  events() {
+    window.addEventListener('resize', () => {
+      this.chart.update();
+    });
   }
-
-
-
 }
 
 export default ChartItem;
