@@ -1,5 +1,6 @@
 'strict';
 import config from './js/config.json';
+import ChartItem from './js/ChartItem';
 import { isJson } from './js/helpers';
 
 const $ = require('jquery');
@@ -11,7 +12,9 @@ import './js/assets';
 
 (function () {
   window.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded');
+
+    const chartMain = new ChartItem('main');
+    chartMain.init('line');
 
     const socket = new WebSocket(config.SocketLink);
 
@@ -22,8 +25,7 @@ import './js/assets';
     socket.addEventListener('message', e => {
       if (isJson(e.data)) {
         const data = JSON.parse(e.data);
-        console.log(data);
-
+        chartMain.updateMain(data);
       } else {
         console.log(e.data);
       }
