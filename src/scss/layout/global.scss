@@ -1,0 +1,68 @@
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  -ms-overflow-style: scrollbar;
+  font-size: get('font.size');
+
+  @media screen and (max-width: $smallscreen) {
+    margin-top: 0 !important;
+
+    #wpadminbar {
+      display: none;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+*:focus {
+  outline: none;
+}
+
+.bg {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
+  width: 100% !important;
+  height: 100% !important;
+
+  &-contain {
+    object-fit: contain;
+  }
+
+  &.mobile {
+    display: none;
+  }
+
+  &.desktop {
+    display: block;
+  }
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+
+p:empty {
+  display: none;
+}
+
+@media all and (max-width: $smallscreen) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+@import './config/variables';
+@import './config/mixins';
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $smallscreen,
+  md: $tablet,
+  lg: $laptop,
+  xl: $desktop,
+  xxl: $desktop
+);
+
+$container-max-widths: (
+  sm: $smallscreen - 40px,
+  md: $tablet - 40px,
+  lg: $laptop - 40px,
+  xl: $desktop - 40px,
+  xxl: $desktop - 40px
+);
+
+
+@import "~bootstrap/scss/bootstrap";
+// ui
+// @import './ui/typography';
+// layout
+// @import './layout/global';
+@import './layout/svg';
+@import './layout/header';
+@import './layout/footer';

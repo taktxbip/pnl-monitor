@@ -1,0 +1,40 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $titles;
+  margin-top: 0;
+}
+
+h2 {
+  font: 500 normal rem(24px) / 1.2 var(--font-p);
+
+  +p {
+    margin-top: 7px;
+  }
+
+  a {
+    font: inherit;
+  }
+}
+
+h3 {
+  font: 300 normal rem(22px) / 1.2 var(--font-p);
+
+  +p {
+    margin-top: 10px;
+  }
+}
+
+h6 {
+  font: 500 normal rem(18px) / 1.27 var(--font-p);
+}
+
+p {
+  font: 400 normal rem(17px) / 1.5 var(--font-p);
+  color: #040404;
+  margin-top: rem(22px);
+  margin-bottom: 0;
+}
