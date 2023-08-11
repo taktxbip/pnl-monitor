@@ -1,10 +1,8 @@
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 import 'chartjs-adapter-moment';
-// import config from '../../../config.json';
-import { shortenNumber } from './helpers';
 
-const oneDayTimestamp = 24 * 60 * 60 * 1000;
+import { manyHorizonalLinesPlugin } from './chartPlugins';
 
 class ChartItem {
   constructor(canvasID) {
@@ -29,7 +27,7 @@ class ChartItem {
         plugins: {
           tooltip: {
             enabled: false
-          },
+          }
         },
         maintainAspectRatio: false,
         animations: false,
@@ -46,7 +44,8 @@ class ChartItem {
             }
           }
         }
-      }
+      },
+      plugins: [manyHorizonalLinesPlugin]
     };
 
     this.chart = new Chart(this.ctx, args);
@@ -75,6 +74,7 @@ class ChartItem {
       this.chart.data.datasets[index].data = pnlCurrent;
     }
 
+    this.chart.options.plugins.manyHorizonalLinesPlugin = { lines: [2] };
     this.chart.update();
   }
 
